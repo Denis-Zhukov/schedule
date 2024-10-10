@@ -7,7 +7,8 @@ export const setButtons = async (ctx: Context) => {
     });
 
     await bot.telegram.setMyCommands([
-        {command: 'b', description: 'Пропали кнопки'}
+        {command: 'b', description: 'Пропали кнопки'},
+        {command: 'reset', description: 'Сбросить настройки'},
     ]);
 
     await ctx.reply('Кнопки установлены', Markup.keyboard([

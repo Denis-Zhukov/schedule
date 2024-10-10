@@ -6,11 +6,17 @@ import {gap, weekend, lesson} from "../constants/text";
 import {differenceInMinutes} from '../utils/time';
 import {daysOfWeek, rusDayOfWeek} from "../constants/daysOfWeek";
 import {addDays} from "date-fns";
+import {setFollowTeacher} from "./reset";
 
 const findSchedule = async (ctx: Context, dayOfWeek: DayOfWeek) => {
+    const user = await prisma.user.findFirst({where: {id: ctx.chat!.id}});
+
+    if (!user) return;
+    if (!user.teacherId) return setFollowTeacher(ctx);
+
     const schedule = await prisma.schedule.findMany({
         where: {
-            teacherId: 1,
+            teacherId: user.teacherId,
             dayOfWeek: dayOfWeek,
         },
         select: {

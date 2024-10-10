@@ -15,12 +15,14 @@ datasource db {
 }
 
 model User {
-  id       Int     @id
-  surname  String? @map("surname")
-  name     String  @map("name")
-  username String  @map("username")
+  id        Int     @id
+  surname   String? @map("surname")
+  name      String  @map("name")
+  username  String  @map("username")
+  teacherId Int?    @map("teacher_id")
 
-  createdAt DateTime @default(now()) @map("created_at")
+  followTeacher Teacher? @relation(fields: [teacherId], references: [id])
+  createdAt     DateTime @default(now()) @map("created_at")
 
   @@map("users")
 }
@@ -30,7 +32,9 @@ model Teacher {
   surname    String
   name       String
   patronymic String
-  Schedule   Schedule[]
+  telegramId String?    @map("telegram_id")
+  schedule   Schedule[]
+  user       User[]
 
   @@map("teachers")
 }

@@ -4,8 +4,14 @@ import {prisma} from "../db";
 import {chill, lesson, now} from "../constants/text";
 import {format} from "date-fns";
 import {createDate} from "../utils/time";
+import {setFollowTeacher} from "./reset";
 
 bot.hears('Сейчас', async (ctx) => {
+    const user = await prisma.user.findFirst({where: {id: ctx.chat.id}});
+
+    if (!user) return;
+    if (!user.teacherId) return setFollowTeacher(ctx);
+
     const nowDate = createDate();
     const dayIndex = nowDate.getDay();
     const dayOfWeek = daysOfWeek[rusDayOfWeek[dayIndex - 1]];
@@ -15,7 +21,7 @@ bot.hears('Сейчас', async (ctx) => {
 
     const data = await prisma.schedule.findFirst({
         where: {
-            teacherId: 1,
+            teacherId: user.teacherId,
             dayOfWeek,
             OR: [
                 {
