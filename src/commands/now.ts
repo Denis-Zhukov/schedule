@@ -2,10 +2,10 @@ import {bot} from "../bot";
 import {daysOfWeek, rusDayOfWeek} from "../constants/daysOfWeek";
 import {prisma} from "../db";
 import {chill, lesson, now} from "../constants/text";
-import {format} from "date-fns";
+import {addHours, format} from "date-fns";
 
 bot.hears('Сейчас', async (ctx) => {
-    const nowDate = new Date();
+    const nowDate = addHours(new Date(), 3);
     const dayIndex = nowDate.getDay();
     const dayOfWeek = daysOfWeek[rusDayOfWeek[dayIndex - 1]];
 
@@ -45,7 +45,7 @@ bot.hears('Сейчас', async (ctx) => {
             teacher: true
         }
     });
-    await ctx.reply(nowDate + '');
+
     if (!data) return ctx.replyWithMarkdownV2(chill);
 
     const {
