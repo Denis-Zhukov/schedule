@@ -20,8 +20,11 @@ const findSchedule = async (ctx: Context, dayOfWeek: DayOfWeek) => {
             timeStart: true,
             timeEnd: true,
             classroom: {select: {name: true}},
-            teacher: true
-        }
+            teacher: true,
+            canteenSchedule: true,
+            leaveSchedule: true
+        },
+        orderBy: {timeStart: 'asc'}
     });
 
     if (schedule.length === 0) {
@@ -40,7 +43,9 @@ const findSchedule = async (ctx: Context, dayOfWeek: DayOfWeek) => {
         classroom,
         timeStart,
         timeEnd,
-        teacher
+        teacher,
+        canteenSchedule,
+        leaveSchedule
     } of schedule) {
         currentLessonStart = timeStart;
 
@@ -57,7 +62,9 @@ const findSchedule = async (ctx: Context, dayOfWeek: DayOfWeek) => {
             timeStart,
             timeEnd,
             classroom: classroom?.name,
-            teacher
+            teacher,
+            canteen: canteenSchedule.length > 0,
+            leave: leaveSchedule.length > 0,
         })}\n\n`;
 
         prevLessonEndTime = timeEnd;

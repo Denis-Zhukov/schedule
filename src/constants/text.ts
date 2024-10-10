@@ -9,7 +9,9 @@ type weekOfDay = {
     timeStart: Date,
     timeEnd: Date,
     classroom?: string,
-    teacher: Teacher
+    teacher: Teacher,
+    canteen?: boolean,
+    leave?: boolean
 };
 
 export const {
@@ -31,7 +33,9 @@ export const {
                  timeStart,
                  subclass,
                  className,
-                 teacher: {surname, name, patronymic}
+                 teacher: {surname, name, patronymic},
+                 canteen,
+                 leave
              }: weekOfDay) => {
         let subclassName = '';
         if (subclass) {
@@ -44,7 +48,11 @@ export const {
         const start = format(createDate(timeStart), 'HH:mm');
         const end = format(createDate(timeEnd), 'HH:mm');
 
-        return `${classes[+className]}*${subclassName}* ${classroomName} \`${teacher}\` _ __${start}\\-${end}__ _`;
+        return `${classes[+className]}*${subclassName}* ${classroomName} \`${teacher}\` _ __${start}\\-${end}__ _${
+            canteen ? '\n\t\t\t\t\t\t*Отвести в сталовку* 🦮' : ''
+        }${
+            leave ? '\n\t\t\t\t\t\t*Вывести из школы* 👊' : ''
+        }`;
     },
     now: "*Сейчас*",
     chill: "*На сегодня больше ничего нет\\. Отдыхаем\\!* 🫶"

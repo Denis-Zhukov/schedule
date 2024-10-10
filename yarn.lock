@@ -242,6 +242,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@types/node@npm:^22.7.5":
+  version: 22.7.5
+  resolution: "@types/node@npm:22.7.5"
+  dependencies:
+    undici-types: "npm:~6.19.2"
+  checksum: 10c0/cf11f74f1a26053ec58066616e3a8685b6bcd7259bc569738b8f752009f9f0f7f85a1b2d24908e5b0f752482d1e8b6babdf1fbb25758711ec7bb9500bfcd6e60
+  languageName: node
+  linkType: hard
+
 "@webassemblyjs/ast@npm:1.12.1, @webassemblyjs/ast@npm:^1.12.1":
   version: 1.12.1
   resolution: "@webassemblyjs/ast@npm:1.12.1"
@@ -1955,6 +1964,7 @@ __metadata:
   resolution: "sh-27-bot@workspace:."
   dependencies:
     "@prisma/client": "npm:^5.19.1"
+    "@types/node": "npm:^22.7.5"
     date-fns: "npm:^4.1.0"
     dotenv: "npm:^16.4.5"
     nodemon: "npm:^3.1.4"

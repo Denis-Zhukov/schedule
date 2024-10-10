@@ -53,15 +53,17 @@ async function main() {
         await prisma.classCallSchedule.createMany({data: relation});
     }
 
-    const schedule = scheduleData.map(({
-                                           class: $class,
-                                           subclass,
-                                           classroom,
-                                           teacherId,
-                                           dayOfWeek,
-                                           timeStart,
-                                           timeEnd
-                                       }) => {
+    await Promise.all(scheduleData.map(async ({
+                                                  class: $class,
+                                                  subclass,
+                                                  classroom,
+                                                  teacherId,
+                                                  dayOfWeek,
+                                                  timeStart,
+                                                  timeEnd,
+                                                  canteen,
+                                                  leave
+                                              }) => {
         const {id: classId} = classes.find(({name}) => name === $class)!;
         const {id: subclassId} = subclasses.find(({name}) => name === subclass)!;
         const classroomObj = classrooms.find(({name}) => name === classroom);
@@ -69,21 +71,27 @@ async function main() {
         timeStart = `1970-01-01T${timeStart}:00+03:00`;
         timeEnd = `1970-01-01T${timeEnd}:00+03:00`;
 
-        return {
-            dayOfWeek: dayOfWeek as DayOfWeek,
-            classId,
-            subclassId,
-            teacherId,
-            timeStart,
-            timeEnd,
-            classroomId: classroomObj?.id
-        };
-    });
+        const {id: scheduleId} = await prisma.schedule.create({
+            data: {
+                dayOfWeek: dayOfWeek as DayOfWeek,
+                classId,
+                subclassId,
+                teacherId,
+                timeStart,
+                timeEnd,
+                classroomId: classroomObj?.id
+            },
+        });
 
-    await prisma.schedule.createMany({
-        data: schedule,
-        skipDuplicates: true
-    });
+        if (canteen) {
+            await prisma.canteenSchedule.create({data: {scheduleId}})
+        }
+
+        if (leave) {
+            await prisma.leaveSchedule.create({data: {scheduleId}})
+        }
+    }));
+
 
     console.log('Database has been seeded.');
 }

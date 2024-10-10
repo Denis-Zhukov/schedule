@@ -24,7 +24,8 @@
     "timeStart": "13:00",
     "timeEnd": "13:45",
     "teacherId": 1,
-    "classroom": "4-4"
+    "classroom": "4-4",
+    "canteen": true
   },
   {
     "dayOfWeek": "MONDAY",
@@ -33,7 +34,8 @@
     "timeStart": "15:00",
     "timeEnd": "15:45",
     "teacherId": 1,
-    "classroom": "4-4"
+    "classroom": "4-4",
+    "canteen": true
   },
   {
     "dayOfWeek": "MONDAY",
@@ -68,7 +70,8 @@
     "timeStart": "13:00",
     "timeEnd": "13:45",
     "teacherId": 1,
-    "classroom": "4-3"
+    "classroom": "4-3",
+    "leave": true
   },
   {
     "dayOfWeek": "TUESDAY",
@@ -140,7 +143,8 @@
     "timeStart": "18:45",
     "timeEnd": "19:30",
     "teacherId": 1,
-    "classroom": "4-4"
+    "classroom": "4-4",
+    "leave": true
   },
   {
     "dayOfWeek": "THURSDAY",
@@ -158,7 +162,8 @@
     "timeStart": "12:00",
     "timeEnd": "12:45",
     "teacherId": 1,
-    "classroom": "4-2"
+    "classroom": "4-2",
+    "leave": true
   },
   {
     "dayOfWeek": "THURSDAY",
@@ -184,7 +189,8 @@
     "timeStart": "15:00",
     "timeEnd": "15:45",
     "teacherId": 1,
-    "classroom": "4-4"
+    "classroom": "4-4",
+    "canteen": true
   },
   {
     "dayOfWeek": "THURSDAY",
@@ -220,7 +226,8 @@
     "timeStart": "15:00",
     "timeEnd": "15:45",
     "teacherId": 1,
-    "classroom": "4-4"
+    "classroom": "4-4",
+    "canteen": true
   },
   {
     "dayOfWeek": "FRIDAY",

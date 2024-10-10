@@ -72,12 +72,33 @@ model Schedule {
   timeEnd     DateTime  @map("time_end")
   classroomId Int?      @map("classroom_id")
 
-  classroom Classroom? @relation(fields: [classroomId], references: [id])
-  teacher   Teacher    @relation(fields: [teacherId], references: [id])
-  class     Class      @relation(fields: [classId], references: [id])
-  subclass  Subclass?  @relation(fields: [subclassId], references: [id])
+  classroom       Classroom?        @relation(fields: [classroomId], references: [id])
+  teacher         Teacher           @relation(fields: [teacherId], references: [id])
+  class           Class             @relation(fields: [classId], references: [id])
+  subclass        Subclass?         @relation(fields: [subclassId], references: [id])
+  canteenSchedule CanteenSchedule[]
+  leaveSchedule   LeaveSchedule[]
 
+  @@unique([dayOfWeek, classId, subclassId, teacherId, timeEnd, timeStart, classroomId])
   @@map("schedule")
+}
+
+model CanteenSchedule {
+  id         Int @id @default(autoincrement())
+  scheduleId Int
+
+  schedule Schedule @relation(fields: [scheduleId], references: [id])
+
+  @@map("canteen_schedule")
+}
+
+model LeaveSchedule {
+  id         Int @id @default(autoincrement())
+  scheduleId Int
+
+  schedule Schedule @relation(fields: [scheduleId], references: [id])
+
+  @@map("leave_schedule")
 }
 
 model CallSchedule {
