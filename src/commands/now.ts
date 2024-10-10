@@ -2,10 +2,11 @@ import {bot} from "../bot";
 import {daysOfWeek, rusDayOfWeek} from "../constants/daysOfWeek";
 import {prisma} from "../db";
 import {chill, lesson, now} from "../constants/text";
-import {addHours, format} from "date-fns";
+import {format} from "date-fns";
+import {createDate} from "../utils/time";
 
 bot.hears('Сейчас', async (ctx) => {
-    const nowDate = addHours(new Date(), 3);
+    const nowDate = createDate();
     const dayIndex = nowDate.getDay();
     const dayOfWeek = daysOfWeek[rusDayOfWeek[dayIndex - 1]];
 

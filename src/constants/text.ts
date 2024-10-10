@@ -1,6 +1,7 @@
 import {classes} from "./classes";
 import {format} from "date-fns";
 import {Teacher} from "@prisma/client";
+import {createDate} from "../utils/time";
 
 type weekOfDay = {
     className: string,
@@ -40,8 +41,8 @@ export const {
         const classroomName = classroom?.replace('-', '\\-') ?? '';
         const teacher = `${surname} ${name[0]}.${patronymic[0]}.`;
 
-        const start = format(timeStart, 'HH:mm');
-        const end = format(timeEnd, 'HH:mm');
+        const start = format(createDate(timeStart), 'HH:mm');
+        const end = format(createDate(timeEnd), 'HH:mm');
 
         return `${classes[+className]}*${subclassName}* ${classroomName} \`${teacher}\` _ __${start}\\-${end}__ _`;
     },
