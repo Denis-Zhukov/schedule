@@ -57,7 +57,7 @@ bot.hears('Сейчас', async (ctx) => {
         teacher
     } = data;
 
-    await ctx.replyWithMarkdownV2(`${now}\\:\n\n${lesson({
+    await ctx.replyWithMarkdownV2(`${nowDate} ${now}\\:\n\n${lesson({
         className,
         subclass: subclass?.name,
         classroom: classroom?.name,

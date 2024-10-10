@@ -15,3 +15,5 @@ build
 
 #!.yarn/cache
 .pnp.*
+
+.vercel
