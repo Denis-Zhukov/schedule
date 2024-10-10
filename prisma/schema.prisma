@@ -1,0 +1,118 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider  = "postgresql"
+  url       = env("POSTGRES_PRISMA_URL")
+  directUrl = env("POSTGRES_URL_NON_POOLING")
+}
+
+model User {
+  id       Int     @id
+  surname  String? @map("surname")
+  name     String  @map("name")
+  username String  @map("username")
+
+  createdAt DateTime @default(now()) @map("created_at")
+
+  @@map("users")
+}
+
+model Teacher {
+  id         Int        @id @default(autoincrement())
+  surname    String
+  name       String
+  patronymic String
+  Schedule   Schedule[]
+
+  @@map("teachers")
+}
+
+model Class {
+  id   Int    @id @default(autoincrement())
+  name String @unique
+
+  schedule          Schedule[]
+  classCallSchedule ClassCallSchedule[]
+
+  @@map("classes")
+}
+
+model Subclass {
+  id   Int    @id @default(autoincrement())
+  name String @unique
+
+  schedule Schedule[]
+
+  @@map("subclasses")
+}
+
+model Classroom {
+  id       Int        @id @default(autoincrement())
+  name     String     @unique
+  Schedule Schedule[]
+
+  @@map("classrooms")
+}
+
+model Schedule {
+  id          Int       @id @default(autoincrement())
+  dayOfWeek   DayOfWeek @map("day_of_week")
+  classId     Int       @map("class_id")
+  subclassId  Int?      @map("subclass_id")
+  teacherId   Int       @map("teacher_id")
+  timeStart   DateTime  @map("time_start")
+  timeEnd     DateTime  @map("time_end")
+  classroomId Int?      @map("classroom_id")
+
+  classroom Classroom? @relation(fields: [classroomId], references: [id])
+  teacher   Teacher    @relation(fields: [teacherId], references: [id])
+  class     Class      @relation(fields: [classId], references: [id])
+  subclass  Subclass?  @relation(fields: [subclassId], references: [id])
+
+  @@map("schedule")
+}
+
+model CallSchedule {
+  id           Int      @id @default(autoincrement())
+  lessonNumber Int      @map("lesson_number")
+  startTime    DateTime @map("start_time")
+  endTime      DateTime @map("end_time")
+
+  ClassCallSchedule ClassCallSchedule[]
+
+  @@map("lesson")
+}
+
+model ClassCallSchedule {
+  classId        Int @map("class_id")
+  callScheduleId Int @map("call_schedule_id")
+
+  class        Class        @relation(fields: [classId], references: [id])
+  callSchedule CallSchedule @relation(fields: [callScheduleId], references: [id])
+
+  @@id([classId, callScheduleId])
+  @@map("class_call_schedule")
+}
+
+enum DayOfWeek {
+  MONDAY
+  TUESDAY
+  WEDNESDAY
+  THURSDAY
+  FRIDAY
+  SATURDAY
+  SUNDAY
+}
+
+enum Shift {
+  FIRST
+  SECOND
+}

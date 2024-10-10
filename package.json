@@ -1,0 +1,26 @@
+{
+  "name": "sh-27-bot",
+  "packageManager": "yarn@4.3.1",
+  "scripts": {
+    "build": "webpack --config webpack.config.js",
+    "start": "node build/bundle.js",
+    "dev": "nodemon src/bot.ts",
+    "seed": "ts-node prisma/seed.ts"
+  },
+  "dependencies": {
+    "@prisma/client": "^5.19.1",
+    "date-fns": "^4.1.0",
+    "dotenv": "^16.4.5",
+    "telegraf": "^4.16.3"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.4",
+    "prisma": "^5.19.1",
+    "ts-loader": "^9.5.1",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.5.4",
+    "webpack": "^5.94.0",
+    "webpack-cli": "^5.1.4",
+    "webpack-node-externals": "^3.0.0"
+  }
+}

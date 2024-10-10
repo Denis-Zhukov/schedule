@@ -1,0 +1,252 @@
+[
+  {
+    "dayOfWeek": "MONDAY",
+    "class": "5",
+    "subclass": "Б",
+    "timeStart": "11:00",
+    "timeEnd": "11:45",
+    "teacherId": 1,
+    "classroom": "4-3"
+  },
+  {
+    "dayOfWeek": "MONDAY",
+    "class": "1",
+    "subclass": "Платные",
+    "timeStart": "12:00",
+    "timeEnd": "12:30",
+    "teacherId": 1,
+    "classroom": "4-1"
+  },
+  {
+    "dayOfWeek": "MONDAY",
+    "class": "4",
+    "subclass": "А",
+    "timeStart": "13:00",
+    "timeEnd": "13:45",
+    "teacherId": 1,
+    "classroom": "4-4"
+  },
+  {
+    "dayOfWeek": "MONDAY",
+    "class": "7",
+    "subclass": "Б",
+    "timeStart": "15:00",
+    "timeEnd": "15:45",
+    "teacherId": 1,
+    "classroom": "4-4"
+  },
+  {
+    "dayOfWeek": "MONDAY",
+    "class": "7",
+    "subclass": "В",
+    "timeStart": "16:00",
+    "timeEnd": "16:45",
+    "teacherId": 1,
+    "classroom": "4-4"
+  },
+  {
+    "dayOfWeek": "TUESDAY",
+    "class": "5",
+    "subclass": "А",
+    "timeStart": "11:00",
+    "timeEnd": "11:45",
+    "teacherId": 1,
+    "classroom": "4-2"
+  },
+  {
+    "dayOfWeek": "TUESDAY",
+    "class": "11",
+    "subclass": "СИЗО",
+    "timeStart": "12:00",
+    "timeEnd": "12:45",
+    "teacherId": 1
+  },
+  {
+    "dayOfWeek": "TUESDAY",
+    "class": "5",
+    "subclass": "Б",
+    "timeStart": "13:00",
+    "timeEnd": "13:45",
+    "teacherId": 1,
+    "classroom": "4-3"
+  },
+  {
+    "dayOfWeek": "TUESDAY",
+    "class": "8",
+    "subclass": "А",
+    "timeStart": "14:00",
+    "timeEnd": "14:45",
+    "teacherId": 1,
+    "classroom": "4-4"
+  },
+  {
+    "dayOfWeek": "TUESDAY",
+    "class": "8",
+    "subclass": "В",
+    "timeStart": "15:00",
+    "timeEnd": "15:45",
+    "teacherId": 1,
+    "classroom": "4-4"
+  },
+  {
+    "dayOfWeek": "TUESDAY",
+    "class": "4",
+    "subclass": "А",
+    "timeStart": "16:00",
+    "timeEnd": "16:45",
+    "teacherId": 1,
+    "classroom": "4-4"
+  },
+  {
+    "dayOfWeek": "TUESDAY",
+    "class": "7",
+    "subclass": "А",
+    "timeStart": "16:55",
+    "timeEnd": "17:40",
+    "teacherId": 1,
+    "classroom": "3-9"
+  },
+  {
+    "dayOfWeek": "WEDNESDAY",
+    "class": "7",
+    "subclass": "А",
+    "timeStart": "16:00",
+    "timeEnd": "16:45",
+    "teacherId": 1,
+    "classroom": "3-7"
+  },
+  {
+    "dayOfWeek": "WEDNESDAY",
+    "class": "8",
+    "subclass": "В",
+    "timeStart": "16:55",
+    "timeEnd": "17:40",
+    "teacherId": 1,
+    "classroom": "4-4"
+  },
+  {
+    "dayOfWeek": "WEDNESDAY",
+    "class": "7",
+    "subclass": "Б",
+    "timeStart": "17:50",
+    "timeEnd": "18:35",
+    "teacherId": 1,
+    "classroom": "4-4"
+  },
+  {
+    "dayOfWeek": "WEDNESDAY",
+    "class": "7",
+    "subclass": "В",
+    "timeStart": "18:45",
+    "timeEnd": "19:30",
+    "teacherId": 1,
+    "classroom": "4-4"
+  },
+  {
+    "dayOfWeek": "THURSDAY",
+    "class": "5",
+    "subclass": "Б",
+    "timeStart": "11:00",
+    "timeEnd": "11:45",
+    "teacherId": 1,
+    "classroom": "4-3"
+  },
+  {
+    "dayOfWeek": "THURSDAY",
+    "class": "5",
+    "subclass": "А",
+    "timeStart": "12:00",
+    "timeEnd": "12:45",
+    "teacherId": 1,
+    "classroom": "4-2"
+  },
+  {
+    "dayOfWeek": "THURSDAY",
+    "class": "11",
+    "subclass": "СИЗО",
+    "timeStart": "13:00",
+    "timeEnd": "13:45",
+    "teacherId": 1
+  },
+  {
+    "dayOfWeek": "THURSDAY",
+    "class": "4",
+    "subclass": "А",
+    "timeStart": "14:00",
+    "timeEnd": "14:45",
+    "teacherId": 1,
+    "classroom": "4-4"
+  },
+  {
+    "dayOfWeek": "THURSDAY",
+    "class": "8",
+    "subclass": "А",
+    "timeStart": "15:00",
+    "timeEnd": "15:45",
+    "teacherId": 1,
+    "classroom": "4-4"
+  },
+  {
+    "dayOfWeek": "THURSDAY",
+    "class": "7",
+    "subclass": "В",
+    "timeStart": "16:00",
+    "timeEnd": "16:45",
+    "teacherId": 1,
+    "classroom": "4-4"
+  },
+  {
+    "dayOfWeek": "FRIDAY",
+    "class": "5",
+    "subclass": "А",
+    "timeStart": "11:00",
+    "timeEnd": "11:45",
+    "teacherId": 1,
+    "classroom": "4-2"
+  },
+  {
+    "dayOfWeek": "FRIDAY",
+    "class": "4",
+    "subclass": "Платные",
+    "timeStart": "12:00",
+    "timeEnd": "12:45",
+    "teacherId": 1,
+    "classroom": "Труды девочек"
+  },
+  {
+    "dayOfWeek": "FRIDAY",
+    "class": "7",
+    "subclass": "Б",
+    "timeStart": "15:00",
+    "timeEnd": "15:45",
+    "teacherId": 1,
+    "classroom": "4-4"
+  },
+  {
+    "dayOfWeek": "FRIDAY",
+    "class": "7",
+    "subclass": "А",
+    "timeStart": "16:00",
+    "timeEnd": "16:45",
+    "teacherId": 1,
+    "classroom": "4-3"
+  },
+  {
+    "dayOfWeek": "FRIDAY",
+    "class": "8",
+    "subclass": "А",
+    "timeStart": "16:55",
+    "timeEnd": "17:40",
+    "teacherId": 1,
+    "classroom": "4-4"
+  },
+  {
+    "dayOfWeek": "FRIDAY",
+    "class": "8",
+    "subclass": "В",
+    "timeStart": "17:50",
+    "timeEnd": "18:35",
+    "teacherId": 1,
+    "classroom": "4-4"
+  }
+]
