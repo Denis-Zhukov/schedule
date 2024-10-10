@@ -64,5 +64,5 @@ bot.hears('Сейчас', async (ctx) => {
         teacher,
         timeEnd,
         timeStart
-    })}`.replace('-', '\\-'));
+    })}`.replace('-', '\\-').replace('+', '\\+'));
 });
