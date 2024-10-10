@@ -45,7 +45,7 @@ bot.hears('Сейчас', async (ctx) => {
             teacher: true
         }
     });
-
+    await ctx.reply(nowDate + '');
     if (!data) return ctx.replyWithMarkdownV2(chill);
 
     const {
@@ -57,12 +57,12 @@ bot.hears('Сейчас', async (ctx) => {
         teacher
     } = data;
 
-    await ctx.replyWithMarkdownV2(`${nowDate} ${now}\\:\n\n${lesson({
+    await ctx.replyWithMarkdownV2(`${now}\\:\n\n${lesson({
         className,
         subclass: subclass?.name,
         classroom: classroom?.name,
         teacher,
         timeEnd,
         timeStart
-    })}`.replace('-', '\\-').replace('+', '\\+'));
+    })}`);
 });
