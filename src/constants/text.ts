@@ -49,7 +49,7 @@ export const {
         const end = format(createDate(timeEnd), 'HH:mm');
 
         return `${classes[+className]}*${subclassName}* ${classroomName} \`${teacher}\` _ __${start}\\-${end}__ _${
-            canteen ? '\n\t\t\t\t\t\t*Отвести в сталовку* 🦮' : ''
+            canteen ? '\n\t\t\t\t\t\t*Отвести в столовку* 🦮' : ''
         }${
             leave ? '\n\t\t\t\t\t\t*Вывести из школы* 👊' : ''
         }`;
