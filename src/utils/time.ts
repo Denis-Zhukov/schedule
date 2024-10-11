@@ -6,7 +6,7 @@ export const differenceInMinutes = (date1: Date, date2: Date) => {
 }
 
 export const createDate = (date?: Date | string) => {
-    return addHours(date ?? new Date(), 0);
+    return addHours(date ?? new Date(), 3);
 }
 
 export const getDifferenceInHoursAndMinutes = (date1: Date, date2: Date) => {
