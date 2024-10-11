@@ -1,12 +1,12 @@
-import {addHours} from "date-fns";
+import {TZDate} from "@date-fns/tz";
 
 export const differenceInMinutes = (date1: Date, date2: Date) => {
     const diffInMs: number = Math.abs(date2.getTime() - date1.getTime());
     return Math.floor(diffInMs / (1000 * 60));
 }
 
-export const createDate = (date?: Date | string) => {
-    return addHours(date ?? new Date(), 3);
+export const createDate = (date?: Date) => {
+    return date ? new TZDate(date, 'Europe/Minsk') : TZDate.tz( 'Europe/Minsk');
 }
 
 export const getDifferenceInHoursAndMinutes = (date1: Date, date2: Date) => {
