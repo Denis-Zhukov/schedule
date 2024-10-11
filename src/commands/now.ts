@@ -2,8 +2,8 @@ import {bot} from "../bot";
 import {daysOfWeek, rusDayOfWeek} from "../constants/daysOfWeek";
 import {prisma} from "../db";
 import {chill, lesson, now} from "../constants/text";
-import {format} from "date-fns";
-import {createDate, getDifferenceInHoursAndMinutes} from "../utils/time";
+import {format, setHours, setMinutes, setSeconds} from "date-fns";
+import {createDate, getDifferenceInHoursAndMinutes, getNormalizedTime} from "../utils/time";
 import {setFollowTeacher} from "./reset";
 
 bot.hears('Сейчас', async (ctx) => {
@@ -64,9 +64,11 @@ bot.hears('Сейчас', async (ctx) => {
         teacher
     } = data;
 
+    const normalizedTimeStart = getNormalizedTime(timeStart);
+    const normalizedTimeEnd = getNormalizedTime(timeEnd);
     let toLesson = '';
-    if (timeStart < nowDate || nowDate > timeEnd) {
-        const {hours, minutes} = getDifferenceInHoursAndMinutes(nowDate, timeStart);
+    if (normalizedTimeStart < nowDate || nowDate > normalizedTimeEnd) {
+        const {hours, minutes} = getDifferenceInHoursAndMinutes(nowDate, normalizedTimeStart);
         toLesson = `\n\nСейчас урока нет\\. До следущего урока\\: ${hours > 0 ? `${hours} ч\\. ` : ''} ${minutes > 0 ? `${minutes} мин\\.` : ''}`
     }
 
@@ -80,3 +82,4 @@ bot.hears('Сейчас', async (ctx) => {
         timeStart
     })}`);
 });
+

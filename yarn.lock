@@ -823,6 +823,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"date-fns-tz@npm:^3.2.0":
+  version: 3.2.0
+  resolution: "date-fns-tz@npm:3.2.0"
+  peerDependencies:
+    date-fns: ^3.0.0 || ^4.0.0
+  checksum: 10c0/3f43300a4335d59f3515dc5196c66b4b56ef2af129eb82e4445ce0983e8ef31a5d038bc0406d669946bbbcf52ed953527527aa28b4a810995d6631a54655abcc
+  languageName: node
+  linkType: hard
+
 "date-fns@npm:^4.1.0":
   version: 4.1.0
   resolution: "date-fns@npm:4.1.0"
@@ -1974,6 +1983,7 @@ __metadata:
     "@prisma/client": "npm:^5.19.1"
     "@types/node": "npm:^22.7.5"
     date-fns: "npm:^4.1.0"
+    date-fns-tz: "npm:^3.2.0"
     dotenv: "npm:^16.4.5"
     nodemon: "npm:^3.1.4"
     prisma: "npm:^5.19.1"
