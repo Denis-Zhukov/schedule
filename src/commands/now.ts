@@ -3,7 +3,7 @@ import {daysOfWeek, rusDayOfWeek} from "../constants/daysOfWeek";
 import {prisma} from "../db";
 import {chill, lesson, now} from "../constants/text";
 import {format} from "date-fns";
-import {createDate} from "../utils/time";
+import {createDate, getDifferenceInHoursAndMinutes} from "../utils/time";
 import {setFollowTeacher} from "./reset";
 
 bot.hears('Сейчас', async (ctx) => {
@@ -64,7 +64,14 @@ bot.hears('Сейчас', async (ctx) => {
         teacher
     } = data;
 
-    await ctx.replyWithMarkdownV2(`${now}\\:\n\n${lesson({
+    let toLesson = '';
+    if (timeStart < nowDate || nowDate > timeEnd) {
+        const {hours, minutes} = getDifferenceInHoursAndMinutes(nowDate, timeStart);
+        toLesson = `\n\nСейчас урока нет\\. До следущего урока\\: ${hours > 0 ? `${hours} ч\\. ` : ''} ${minutes > 0 ? `${minutes} мин\\.` : ''}`
+    }
+
+
+    await ctx.replyWithMarkdownV2(`${now}\\:${toLesson}\n\n${lesson({
         className,
         subclass: subclass?.name,
         classroom: classroom?.name,
