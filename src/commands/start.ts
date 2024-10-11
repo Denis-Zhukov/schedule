@@ -1,7 +1,7 @@
 import {greeting, onlyPrivate} from "../constants/text";
 import {bot} from "../bot";
 import {prisma} from "../db";
-import {setButtons} from "./reset-menu";
+import {setButtons} from "./menu";
 import {setFollowTeacher} from "./reset";
 
 bot.start(async (ctx) => {

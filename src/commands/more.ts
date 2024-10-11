@@ -3,6 +3,7 @@ import {Markup} from "telegraf";
 import {callSchedule} from "./call-schedule";
 import {setFollowTeacher} from "./reset";
 import {prisma} from "../db";
+import {contacts} from "./contacts";
 
 bot.hears('Ещё', async (ctx) => {
     const id = ctx.chat.id;
@@ -20,7 +21,8 @@ bot.hears('Ещё', async (ctx) => {
 
     await ctx.replyWithMarkdownV2(text, Markup.inlineKeyboard([
         [Markup.button.callback('Расписание звонков', 'call-schedule')],
-        [Markup.button.callback('Сбросить настройки', 'reset')]
+        [Markup.button.callback('Сбросить настройки', 'reset')],
+        [Markup.button.callback('Контакты', 'contacts')]
     ]));
 
 });
@@ -31,6 +33,10 @@ bot.action('call-schedule', async (ctx) => {
 })
 bot.action('reset', async (ctx) => {
     await setFollowTeacher(ctx);
+    await ctx.answerCbQuery();
+})
+bot.action('contacts', async (ctx) => {
+    await contacts(ctx);
     await ctx.answerCbQuery();
 })
 
