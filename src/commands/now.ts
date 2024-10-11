@@ -66,8 +66,10 @@ bot.hears('Сейчас', async (ctx) => {
 
     const normalizedTimeStart = getNormalizedTime(timeStart);
     const normalizedTimeEnd = getNormalizedTime(timeEnd);
+    const normalizedNow = getNormalizedTime(nowDate);
+
     let toLesson = '';
-    if (normalizedTimeStart < nowDate || nowDate > normalizedTimeEnd) {
+    if (normalizedTimeStart > normalizedNow || normalizedNow > normalizedTimeEnd) {
         const {hours, minutes} = getDifferenceInHoursAndMinutes(nowDate, normalizedTimeStart);
         toLesson = `\n\nСейчас урока нет\\. До следущего урока\\: ${hours > 0 ? `${hours} ч\\. ` : ''} ${minutes > 0 ? `${minutes} мин\\.` : ''}`
     }

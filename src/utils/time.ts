@@ -14,7 +14,7 @@ export const createDate = (date?: Date) => {
 export const getDifferenceInHoursAndMinutes = (date1: Date, date2: Date) => {
     const time1 = date1.getHours() * 60 + date1.getMinutes();
     const time2 = date2.getHours() * 60 + date2.getMinutes();
-    const diffInMinutes = Math.abs(time2 - time1);
+    const diffInMinutes = time2 - time1;
 
     const hours = Math.floor(diffInMinutes / 60);
     const minutes = diffInMinutes % 60;
@@ -24,5 +24,5 @@ export const getDifferenceInHoursAndMinutes = (date1: Date, date2: Date) => {
 
 export const getNormalizedTime = (date: Date) => {
     const zonedDate = toZonedTime(date, 'Europe/Minsk');
-    return setSeconds(setMinutes(setHours(new Date(1970, 0, 1), zonedDate.getHours()), zonedDate.getMinutes()), 0);
+    return setSeconds(setMinutes(setHours(new TZDate(1970, 0, 1, 'Europe/Minsk'), zonedDate.getHours()), zonedDate.getMinutes()), 0);
 }
