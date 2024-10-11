@@ -10,11 +10,12 @@ export const setButtons = async (ctx: Context) => {
         {command: 'b', description: 'Пропали кнопки'},
         {command: 'reset', description: 'Сбросить настройки'},
         {command: 'call_schedule', description: 'Расписание звонков'},
+        {command: 'contacts', description: 'Расписание звонков'},
     ]);
 
     await ctx.reply('Кнопки установлены', Markup.keyboard([
             ['ПН', 'ВТ', 'СР', 'ЧТ', 'ПТ', 'СБ'],
-            ['Сегодня', 'Сейчас', 'Завтра']
+            ['Сегодня', 'Сейчас', 'Завтра', 'Ещё']
         ]).resize()
     )
 }
