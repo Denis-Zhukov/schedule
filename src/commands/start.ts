@@ -18,13 +18,13 @@ bot.start(async (ctx) => {
             id: chat.id,
             name: chat.first_name,
             surname: chat.last_name,
-            username: chat.username!
+            username: chat.username
         },
         update: {
             id: chat.id,
             name: chat.first_name,
             surname: chat.last_name,
-            username: chat.username!
+            username: chat.username
         }
     })
 
