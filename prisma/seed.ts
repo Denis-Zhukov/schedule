@@ -15,7 +15,6 @@ async function main() {
     await prisma.subclass.deleteMany();
     await prisma.classroom.deleteMany();
     await prisma.classCallSchedule.deleteMany();
-    await prisma.adminSchedule.deleteMany();
 
     const classes = await prisma.class.createManyAndReturn({
         data: classesData.map(name => ({name})),
