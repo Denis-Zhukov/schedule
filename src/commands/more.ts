@@ -1,9 +1,10 @@
-import {bot} from "../bot";
+import {bot} from "@/bot";
 import {Markup} from "telegraf";
 import {callSchedule} from "./call-schedule";
-import {setFollowTeacher} from "./reset";
-import {prisma} from "../db";
+import {setFollowTeacher} from "./set-follow-teacher";
+import {prisma} from "@/db";
 import {contacts} from "./contacts";
+import {adminSchedule} from "@/commands/admin-schedule";
 
 bot.hears('Ещё', async (ctx) => {
     const id = ctx.chat.id;
@@ -20,6 +21,7 @@ bot.hears('Ещё', async (ctx) => {
     }
 
     await ctx.replyWithMarkdownV2(text, Markup.inlineKeyboard([
+        [Markup.button.callback('Расписание администрации', 'admin-schedule')],
         [Markup.button.callback('Расписание звонков', 'call-schedule')],
         [Markup.button.callback('Сбросить настройки', 'reset')],
         [Markup.button.callback('Контакты', 'contacts')]
@@ -27,6 +29,10 @@ bot.hears('Ещё', async (ctx) => {
 
 });
 
+bot.action('admin-schedule', async (ctx) => {
+    await adminSchedule(ctx);
+    await ctx.answerCbQuery();
+})
 bot.action('call-schedule', async (ctx) => {
     await callSchedule(ctx);
     await ctx.answerCbQuery();

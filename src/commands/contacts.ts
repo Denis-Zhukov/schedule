@@ -1,4 +1,4 @@
-import {bot} from "../bot";
+import {bot} from "@/bot";
 import {Context} from "telegraf";
 
 const developer = '@Denis_Zhukov_Hachiko';

@@ -1,8 +1,8 @@
-import {greeting, onlyPrivate} from "../constants/text";
-import {bot} from "../bot";
-import {prisma} from "../db";
-import {setButtons} from "./menu";
-import {setFollowTeacher} from "./reset";
+import {greeting, onlyPrivate} from "@/constants/text";
+import {bot} from "@/bot";
+import {prisma} from "@/db";
+import {resetMenu} from "./reset-menu";
+import {setFollowTeacher} from "./set-follow-teacher";
 
 bot.start(async (ctx) => {
     const chat = ctx.chat;
@@ -28,7 +28,7 @@ bot.start(async (ctx) => {
         }
     })
 
-    await setButtons(ctx);
+    await resetMenu(ctx);
     await ctx.replyWithMarkdownV2(greeting(user.name));
     await setFollowTeacher(ctx);
 });

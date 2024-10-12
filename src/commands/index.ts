@@ -1,8 +1,9 @@
 import './start';
-import './menu';
-import './choose-day-weak';
+import './reset-menu';
+import './weekday-schedule';
 import './now';
-import './reset';
+import './set-follow-teacher';
 import './call-schedule';
 import './more';
 import './contacts';
+import './admin-schedule';

@@ -1,7 +1,7 @@
-import {bot} from '../bot';
+import {bot} from '@/bot';
 import {Context, Markup} from "telegraf";
 
-export const setButtons = async (ctx: Context) => {
+export const resetMenu = async (ctx: Context) => {
     await bot.telegram.setChatMenuButton({
         menuButton: {type: 'commands'}
     });
@@ -9,6 +9,7 @@ export const setButtons = async (ctx: Context) => {
     await bot.telegram.setMyCommands([
         {command: 'b', description: 'Пропали кнопки'},
         {command: 'reset', description: 'Сбросить настройки'},
+        {command: 'admin_schedule', description: 'Расписание администрации'},
         {command: 'call_schedule', description: 'Расписание звонков'},
         {command: 'contacts', description: 'Контакты'},
     ]);
@@ -20,5 +21,5 @@ export const setButtons = async (ctx: Context) => {
     )
 }
 
-bot.command('b', setButtons)
+bot.command('b', resetMenu)
 

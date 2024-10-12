@@ -1,15 +1,22 @@
 {
   "compilerOptions": {
+    "target": "es6",
+    "module": "commonjs",
     "outDir": "./build",
     "rootDir": "./src",
-    "target": "ES2020",
-    "module": "CommonJS",
     "strict": true,
     "esModuleInterop": true,
-    "skipLibCheck": true,
-    "resolveJsonModule": true
+    "baseUrl": ".",
+    "paths": {
+      "@/*": [
+        "src/*"
+      ]
+    }
   },
   "include": [
     "src/**/*"
+  ],
+  "exclude": [
+    "node_modules"
   ]
 }

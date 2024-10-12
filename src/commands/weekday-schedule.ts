@@ -1,15 +1,15 @@
-import {bot} from "../bot";
+import {bot} from "@/bot";
 import {Context} from "telegraf";
-import {prisma} from "../db";
+import {prisma} from "@/db";
 import {DayOfWeek} from "@prisma/client";
-import {gap, weekend, lesson} from "../constants/text";
-import {differenceInMinutes} from '../utils/time';
-import {daysOfWeek, rusDayOfWeek} from "../constants/daysOfWeek";
+import {gap, weekend, lesson} from "@/constants/text";
+import {createDate, differenceInMinutes} from '@/utils/time';
+import {daysOfWeek, rusDayOfWeek} from "@/constants/daysOfWeek";
 import {addDays} from "date-fns";
-import {setFollowTeacher} from "./reset";
+import {setFollowTeacher} from "./set-follow-teacher";
 
 const findSchedule = async (ctx: Context, dayOfWeek: DayOfWeek) => {
-    const user = await prisma.user.findFirst({where: {id: ctx.chat!.id}});
+    const user = await prisma.user.findFirst({where: {id: ctx.chat?.id ?? 0}});
 
     if (!user) return;
     if (!user.teacherId) return setFollowTeacher(ctx);
@@ -84,13 +84,13 @@ bot.hears(rusDayOfWeek, async (ctx) => {
     await findSchedule(ctx, dayOfWeek);
 });
 bot.hears('Сегодня', async (ctx) => {
-    const today = new Date();
+    const today = createDate();
     const dayIndex = today.getDay();
     const dayOfWeek = daysOfWeek[rusDayOfWeek[dayIndex - 1]];
     await findSchedule(ctx, dayOfWeek);
 });
 bot.hears('Завтра', async (ctx) => {
-    const today = addDays(new Date(), 1);
+    const today = addDays(createDate(), 1);
     const dayIndex = today.getDay();
     const dayOfWeek = daysOfWeek[rusDayOfWeek[dayIndex - 1]];
     await findSchedule(ctx, dayOfWeek);

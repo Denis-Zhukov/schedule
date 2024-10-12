@@ -1,10 +1,10 @@
-import {bot} from "../bot";
-import {daysOfWeek, rusDayOfWeek} from "../constants/daysOfWeek";
-import {prisma} from "../db";
-import {chill, lesson, now} from "../constants/text";
-import {format, setHours, setMinutes, setSeconds} from "date-fns";
-import {createDate, getDifferenceInHoursAndMinutes, getNormalizedTime} from "../utils/time";
-import {setFollowTeacher} from "./reset";
+import {bot} from "@/bot";
+import {daysOfWeek, rusDayOfWeek} from "@/constants/daysOfWeek";
+import {prisma} from "@/db";
+import {chill, lesson, now} from "@/constants/text";
+import {format} from "date-fns";
+import {createDate, getDifferenceInHoursAndMinutes, getNormalizedTime} from "@/utils/time";
+import {setFollowTeacher} from "./set-follow-teacher";
 
 bot.hears('Сейчас', async (ctx) => {
     const user = await prisma.user.findFirst({where: {id: ctx.chat.id}});
@@ -73,7 +73,6 @@ bot.hears('Сейчас', async (ctx) => {
         const {hours, minutes} = getDifferenceInHoursAndMinutes(nowDate, normalizedTimeStart);
         toLesson = `\n\nСейчас урока нет\\. До следущего урока\\: ${hours > 0 ? `${hours} ч\\. ` : ''} ${minutes > 0 ? `${minutes} мин\\.` : ''}`
     }
-
 
     await ctx.replyWithMarkdownV2(`${now}\\:${toLesson}\n\n${lesson({
         className,
