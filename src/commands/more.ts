@@ -21,7 +21,7 @@ bot.hears('Ещё', async (ctx) => {
     }
 
     await ctx.replyWithMarkdownV2(text, Markup.inlineKeyboard([
-        [Markup.button.callback('Расписание администрации', 'admin-schedule')],
+        [Markup.button.callback('Дежурный администратор', 'admin-schedule')],
         [Markup.button.callback('Расписание звонков', 'call-schedule')],
         [Markup.button.callback('Сбросить настройки', 'reset')],
         [Markup.button.callback('Контакты', 'contacts')]
