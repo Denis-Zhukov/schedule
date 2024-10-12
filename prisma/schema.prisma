@@ -129,29 +129,6 @@ model ClassCallSchedule {
   @@map("class_call_schedule")
 }
 
-model Admin {
-  id            Int             @id
-  surname       String?         @map("surname")
-  name          String          @map("name")
-  username      String?         @map("username")
-  AdminSchedule AdminSchedule[]
-
-  @@map("admins")
-}
-
-model AdminSchedule {
-  id        Int       @id @default(autoincrement())
-  dayOfWeek DayOfWeek @map("day_of_week")
-  adminId   Int       @map("admin_id")
-  shift     Shift
-  startTime DateTime  @map("start_time")
-  endTime   DateTime  @map("end_time")
-
-  admin Admin @relation(fields: [adminId], references: [id], onDelete: Cascade)
-
-  @@map("admin_schedule")
-}
-
 enum DayOfWeek {
   MONDAY
   TUESDAY
@@ -160,9 +137,4 @@ enum DayOfWeek {
   FRIDAY
   SATURDAY
   SUNDAY
-}
-
-enum Shift {
-  FIRST
-  SECOND
 }
