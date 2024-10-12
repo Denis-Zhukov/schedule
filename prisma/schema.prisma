@@ -21,20 +21,21 @@ model User {
   username  String? @map("username")
   teacherId Int?    @map("teacher_id")
 
-  followTeacher Teacher? @relation(fields: [teacherId], references: [id])
+  followTeacher Teacher? @relation(fields: [teacherId], references: [id], onDelete: SetNull)
   createdAt     DateTime @default(now()) @map("created_at")
 
   @@map("users")
 }
 
 model Teacher {
-  id         Int        @id @default(autoincrement())
+  id         Int     @id @default(autoincrement())
   surname    String
   name       String
   patronymic String
-  telegramId String?    @map("telegram_id")
-  schedule   Schedule[]
-  user       User[]
+  telegramId String? @map("telegram_id")
+
+  schedule Schedule[]
+  user     User[]
 
   @@map("teachers")
 }
@@ -59,8 +60,9 @@ model Subclass {
 }
 
 model Classroom {
-  id       Int        @id @default(autoincrement())
-  name     String     @unique
+  id   Int    @id @default(autoincrement())
+  name String @unique
+
   Schedule Schedule[]
 
   @@map("classrooms")
@@ -76,10 +78,10 @@ model Schedule {
   timeEnd     DateTime  @map("time_end")
   classroomId Int?      @map("classroom_id")
 
-  classroom       Classroom?        @relation(fields: [classroomId], references: [id])
-  teacher         Teacher           @relation(fields: [teacherId], references: [id])
-  class           Class             @relation(fields: [classId], references: [id])
-  subclass        Subclass?         @relation(fields: [subclassId], references: [id])
+  classroom       Classroom?        @relation(fields: [classroomId], references: [id], onDelete: SetNull)
+  teacher         Teacher           @relation(fields: [teacherId], references: [id], onDelete: Restrict)
+  class           Class             @relation(fields: [classId], references: [id], onDelete: Restrict)
+  subclass        Subclass?         @relation(fields: [subclassId], references: [id], onDelete: SetNull)
   canteenSchedule CanteenSchedule[]
   leaveSchedule   LeaveSchedule[]
 
@@ -91,7 +93,7 @@ model CanteenSchedule {
   id         Int @id @default(autoincrement())
   scheduleId Int
 
-  schedule Schedule @relation(fields: [scheduleId], references: [id])
+  schedule Schedule @relation(fields: [scheduleId], references: [id], onDelete: Cascade)
 
   @@map("canteen_schedule")
 }
@@ -100,7 +102,7 @@ model LeaveSchedule {
   id         Int @id @default(autoincrement())
   scheduleId Int
 
-  schedule Schedule @relation(fields: [scheduleId], references: [id])
+  schedule Schedule @relation(fields: [scheduleId], references: [id], onDelete: Cascade)
 
   @@map("leave_schedule")
 }
@@ -120,11 +122,34 @@ model ClassCallSchedule {
   classId        Int @map("class_id")
   callScheduleId Int @map("call_schedule_id")
 
-  class        Class        @relation(fields: [classId], references: [id])
-  callSchedule CallSchedule @relation(fields: [callScheduleId], references: [id])
+  class        Class        @relation(fields: [classId], references: [id], onDelete: Cascade)
+  callSchedule CallSchedule @relation(fields: [callScheduleId], references: [id], onDelete: Cascade)
 
   @@id([classId, callScheduleId])
   @@map("class_call_schedule")
+}
+
+model Admin {
+  id            Int             @id
+  surname       String?         @map("surname")
+  name          String          @map("name")
+  username      String?         @map("username")
+  AdminSchedule AdminSchedule[]
+
+  @@map("admins")
+}
+
+model AdminSchedule {
+  id        Int       @id @default(autoincrement())
+  dayOfWeek DayOfWeek @map("day_of_week")
+  adminId   Int       @map("admin_id")
+  shift     Shift
+  startTime DateTime  @map("start_time")
+  endTime   DateTime  @map("end_time")
+
+  admin Admin @relation(fields: [adminId], references: [id], onDelete: Cascade)
+
+  @@map("admin_schedule")
 }
 
 enum DayOfWeek {

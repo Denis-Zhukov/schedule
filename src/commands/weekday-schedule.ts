@@ -92,7 +92,7 @@ bot.hears('Сегодня', async (ctx) => {
 bot.hears('Завтра', async (ctx) => {
     const today = addDays(createDate(), 1);
     const dayIndex = today.getDay();
-    const dayOfWeek = daysOfWeek[rusDayOfWeek[dayIndex - 1]];
+    const dayOfWeek = daysOfWeek[rusDayOfWeek[dayIndex === 0 ? 6 : dayIndex - 1]];
     await findSchedule(ctx, dayOfWeek);
 });
 

@@ -1,4 +1,4 @@
-import {DayOfWeek, PrismaClient, Subclass} from "@prisma/client";
+import {DayOfWeek, PrismaClient} from "@prisma/client";
 import callSchedules from './contants/call-schedule.json';
 import teachers from './contants/teachers.json';
 import classesData from './contants/classes.json';
@@ -9,6 +9,14 @@ import classroomsData from './contants/classrooms.json';
 const prisma = new PrismaClient();
 
 async function main() {
+    await prisma.schedule.deleteMany();
+    await prisma.teacher.deleteMany();
+    await prisma.class.deleteMany();
+    await prisma.subclass.deleteMany();
+    await prisma.classroom.deleteMany();
+    await prisma.classCallSchedule.deleteMany();
+    await prisma.adminSchedule.deleteMany();
+
     const classes = await prisma.class.createManyAndReturn({
         data: classesData.map(name => ({name})),
         skipDuplicates: true
